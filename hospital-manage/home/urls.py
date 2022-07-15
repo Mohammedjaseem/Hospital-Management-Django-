@@ -18,4 +18,6 @@ urlpatterns = [
     path("logout", views.logout_request, name= "logout"),
     path("profile", views.profile, name= "profile"),#profile page not completed
     path("warning", views.warning, name= "warning"),
+    path("wrongid", views.wrongid, name= "wrongid"),
+    path("invalidRegister", views.invalidRegister, name= "invalidRegister"),
 ]

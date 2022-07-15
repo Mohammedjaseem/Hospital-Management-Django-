@@ -27,57 +27,92 @@
   <link rel="stylesheet" href="{% static '/css/style.css'%}">
   <style>
     .barbackground {
-      background-color: #32ad30;
+      background-color: #6db8bb;
     }
     .border-radi{
       border-radius: 20px;
     }
+    .back-img {
+      {% comment %} background-image: url('https://preview.colorlib.com/theme/medico/img/xbanner_bg.png.pagespeed.ic.8IoVZluPew.png'); {% endcomment %}
+      {% comment %} background-repeat: no-repeat; {% endcomment %}
+      {% comment %} background-size: contain; {% endcomment %}
+      background-color: #140941;
+     }
+     .btn-clr{
+      background-color:#50a2fd;
+      color:white;
+     }
+     .text-color-nav{
+      color:#140941;
+     }
+     .text-color-nav2{
+      background-color:#140941;
+      border-radius:20px;
+     }
+     
+
+     li:hover{
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+  }
   </style>
 </head>
 
-<body>
+<body class="back-img">
 
-  <nav class="navbar barbackground navbar-expand-md ">
+  <nav class="navbar barbackground navbar-expand-md  "> 
     <div class="container">
       <div class="col-2 text-left pl-md-0">
-        <h4 class="text-white"> Le'valor Health </h4>
+        <span class=" font-weight-bold" style="color:#140941; font-size:25px">
+        Le'valor Health 
+        </span>
       </div>
 
       <div class="collapse navbar-collapse justify-content-center col-md-8 navbar-collapse-3">
         <ul class="navbar-nav justify-content-center  fw-bold">
           <li class="nav-item active">
-            <a class="nav-link text-white" href="{% url 'home' %}">Home </a>
+            <a class="nav-link text-color-nav" href="{% url 'home' %}">Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'about' %}">About</a>
+            <a class="nav-link text-color-nav" href="{% url 'about' %}">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'bookings' %}">Booking</a>
+            <a class="nav-link text-color-nav" href="{% url 'bookings' %}">Booking</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'doctors' %}">Doctors</a>
+            <a class="nav-link text-color-nav" href="{% url 'doctors' %}">Doctors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'departments' %}">Departments</a>
+            <a class="nav-link text-color-nav" href="{% url 'departments' %}">Departments</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'contact' %}">Contact Us</a>
+            <a class="nav-link text-color-nav" href="{% url 'contact' %}">Contact Us</a>
           </li>
-          <div class="collapse navbar-collapse text-dark" id="navbarText">
+          <div class="collapse navbar-collapse text-dark rounded" id="navbarText" >
             <ul class="navbar-nav mr-auto">
               {% if user.is_authenticated %}
-              
+
+
+     
+
+               <div class="dropdown">
+                <li class="nav-link text-color-nav dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Hai, <span class=" text-inline-block" style="color:#c21902;">{{user.username}}</span>
+               </li>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">  
               <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
+                <a class="nav-link text-color-nav" href="/logout">Logout</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile' %}">Welcome, {{user.username}}</a>
+                <a class="nav-link text-color-nav" href="{% url 'profile' %}">Go to Profile</a>
               </li>
+            </div>
+          </div>
         
               {% else %}
         
               <li class="nav-item">
-                <a class="nav-link" href="/login">User Login</a>
+                <a class="nav-link text-color-nav" href="/login">User Login</a>
               </li>
         
               {% endif %}
@@ -92,14 +127,14 @@
 
   {% block content%}{% endblock %}
 
-  <section >
-    <footer class="pt-2 pb-2  barbackground text-light ">
+  <section class="">
+    <footer class="pt-2 pb-2  barbackground text-Dark ">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-12 col-md-8 font-weight-bold">
+          <div class="col-12 col-md-8 font-weight-bold text-color-nav">
             www.levalorhealth.com
           </div>
-          <div class="col-12 col-md-4 mt-4 mt-md-0 text-center text-md-end">
+          <div class="col-12 col-md-4 mt-4 mt-md-0 text-center font-weight-bold text-md-end text-color-nav">
             © 2022 Le'valor Health. All Rights Reserved
           </div>
         </div>

@@ -7,17 +7,17 @@ Department
 
 
 {% block content %}
-<div class="container" >
+<div class="container " >
     <div class="row">
         <div class="col-md-12 p-5 text-center">
-            <h1 class="text-secondary text-decoration-underline">Our Departments</h1>
+            <h1 class="text-secondary text-white text-decoration-underline">Our Departments</h1>
         </div>
     </div>
 </div>
 
-<div class='container  bg-light '>
+<div class='container  bg-light my-5 rounded p-5'>
     {% for d in dept %}
-    <div class="card p-1 my-3 mx-3  " style="width: 15rem; display:inline-block">
+    <div class="card p-1 my-3 mx-3  " style="width: 18rem; display:inline-block">
         <div class="card-body">
           <h5 class="card-title text-danger">{{d.dep_name}}</h5>
           <p class="card-text">{{d.dep_decription}}</p>

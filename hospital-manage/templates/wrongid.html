@@ -9,7 +9,7 @@
 
 <!--Login--> 
 <div class="container py-5 col-md-6 " style="margin-left:35%;">
-  <h4 class="text-white">User Login</h4><br>
+   <h3>Invalid Username or Password</h3><br>
   <div class="bg-info p-5" style="width:410px; border-radius: 40px;">
   <form method="POST" style="width:300px; ">
     {% csrf_token %}
@@ -17,7 +17,7 @@
     <br>
     <button class="btn btn-primary" type="submit">Login</button>
   </form><br><br>
-  <p class="">Don't have an account? <br><a href="/register">Create an account</a>.</p>
+  <p class="">Don't have an account? <a href="/register"><br>Create an account</a>.</p>
 </div></div>
 
 {% endblock %}
