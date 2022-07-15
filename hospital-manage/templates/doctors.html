@@ -6,14 +6,14 @@ Doctors
 
 
 {% block content %}
-<h1 class='p-2 text-center'>Doctors</h1>
+<h1 class='p-2 my-5 text-center text-decoration-underline'>Specialized doctors</h1>
 
-<div class='container d-flex justify-content-center bg-light '>
+<div class='container d-flex justify-content-center bg-light rounded '>
 {% for d in doctors%}
 
 
-    <div class="card p-1 my-5 mx-2 items-center " style="width: 17rem; display:inline-block">
-        <img class="card-img-top" src="{{ d.doc_img.url }}" alt="{{ d.name }}">
+    <div class="card p-1 my-5 mx-2 items-center  " style="width: 17rem; display:inline-block">
+        <img class="card-img-top " src="{{ d.doc_img.url }}" alt="{{ d.name }}">
         <div class="card-body">
           <h5 class="card-title">{{d.doc_name}}</h5>
           <p class="card-text">{{d.doc_spec}}</p>
