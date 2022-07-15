@@ -2,6 +2,7 @@ from django import forms
 from .models import Booking
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.db import models  
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -24,7 +25,7 @@ class BookingForm(forms.ModelForm):
         }
 
 class NewUserForm(UserCreationForm):
-	email = forms.EmailField(required=True)
+	email = forms.EmailField(required=True)  
 
 	class Meta:
 		model = User
@@ -36,3 +37,6 @@ class NewUserForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+
+
+

@@ -19,6 +19,9 @@
     .barbackground {
       background-color: #32ad30;
     }
+    .border-radi{
+      border-radius: 20px;
+    }
   </style>
 </head>
 
@@ -50,7 +53,7 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="{% url 'contact' %}">Contact Us</a>
           </li>
-          <div class="collapse navbar-collapse" id="navbarText">
+          <div class="collapse navbar-collapse text-dark" id="navbarText">
             <ul class="navbar-nav mr-auto">
               {% if user.is_authenticated %}
               
@@ -58,7 +61,7 @@
                 <a class="nav-link" href="/logout">Logout</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+                <a class="nav-link" href="{% url 'profile' %}">Welcome, {{user.username}}</a>
               </li>
         
               {% else %}
@@ -79,7 +82,7 @@
 
   {% block content%}{% endblock %}
 
-  <section class="">
+  <section >
     <footer class="pt-2 pb-2  barbackground text-light ">
       <div class="container">
         <div class="row align-items-center">

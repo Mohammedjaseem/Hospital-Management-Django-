@@ -37,7 +37,7 @@ def bookings(request):
     			    }
     			    return render(request, 'bookings.html', dict_form)
 	else:
-		return redirect("login")
+		return redirect("warning")
 
 
 def doctors(request):
@@ -112,6 +112,25 @@ def profile(request):
 		return render(request, "profile.html")
 	else:
 		return redirect("login")
+
+def warning(request):
+	if request.method == "POST":
+		form = AuthenticationForm(request, data=request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				login(request, user)
+				messages.info(request, f"You are now logged in as {username}.")
+				return redirect("bookings")
+			else:
+				messages.error(request,"Invalid username or password.")
+		else:
+			messages.error(request,"Invalid username or password.")
+	form = AuthenticationForm()
+	return render(request=request, template_name="warning.html", context={"login_form":form})
+
 
 
 

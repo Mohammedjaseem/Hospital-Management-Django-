@@ -17,7 +17,8 @@ Doctors
         <div class="card-body">
           <h5 class="card-title">{{d.doc_name}}</h5>
           <p class="card-text">{{d.doc_spec}}</p>
-          <h6>{{d.dep_name}}</h6>
+          <h6>{{d.dep_name}}</h6><br>
+          <a class="btn btn-info " href="{% url 'bookings' %}" role="button">Book Doctor</a>
         </div>
       </div>
 

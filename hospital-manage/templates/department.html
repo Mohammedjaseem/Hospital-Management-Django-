@@ -1,26 +1,34 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 Department
 {% endblock %}
 
 
-
 {% block content %}
-<div class="container">
+<div class="container" >
     <div class="row">
         <div class="col-md-12 p-5 text-center">
-            <h1>Welcome to our Department</h1>
+            <h1 class="text-secondary text-decoration-underline">Our Departments</h1>
         </div>
     </div>
 </div>
 
-{% for d in dept %}
-<div class="  mx-auto text-center p3 my-3 w-50 bg-success text-white  border border-warning rounded">
-    <h1>{{d.dep_name}} </h1>
-    <p>{{d.dep_decription}}</p>
+<div class='container  bg-light '>
+    {% for d in dept %}
+    <div class="card p-1 my-3 mx-3  " style="width: 15rem; display:inline-block">
+        <div class="card-body">
+          <h5 class="card-title text-danger">{{d.dep_name}}</h5>
+          <p class="card-text">{{d.dep_decription}}</p>
+        </div>
+      </div>
+    
+    {% endfor %}
 </div>
-{% endfor %}
+
+
 {% endblock %}
+
 
 
