@@ -37,7 +37,8 @@ def bookings(request):
     			    }
     			    return render(request, 'bookings.html', dict_form)
 	else:
-		return redirect("warning")
+		messages.success(request, "You need to login for bookings" )
+		return redirect("login")
 
 
 def doctors(request):
@@ -99,7 +100,7 @@ def login_request(request):
 			user = authenticate(username=username, password=password)
 			if user is not None:
 				login(request, user)
-				messages.info(request, f"You are now logged in as {username}.")
+				# messages.info(request, f"You are now logged in as {username}.")  # this will display a message on the screen after login
 				return redirect("profile")
 			else:
 				messages.error(request,"Invalid username or password.")
@@ -113,7 +114,8 @@ def login_request(request):
 def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
-	return redirect("/")
+	return redirect("login")
+	
 
 def profile(request):
 	if request.user.is_authenticated:
@@ -123,23 +125,6 @@ def profile(request):
 
 
 
-def warning(request):
-	if request.method == "POST":
-		form = AuthenticationForm(request, data=request.POST)
-		if form.is_valid():
-			username = form.cleaned_data.get('username')
-			password = form.cleaned_data.get('password')
-			user = authenticate(username=username, password=password)
-			if user is not None:
-				login(request, user)
-				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("bookings")
-			else:
-				return redirect("login")
-		else:
-			return redirect("login")
-	form = AuthenticationForm()
-	return render(request=request, template_name="warning.html", context={"login_form":form})
 
 
 
