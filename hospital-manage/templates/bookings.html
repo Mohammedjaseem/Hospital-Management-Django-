@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% load crispy_forms_tags %}
 
 {% block title %}
@@ -15,19 +17,19 @@ Bookings
       <div class="col-xl-6 col-lg-6 col-md-6" >
         <div class=" my-5 mx-5 p-4 rounded " style=" background-color:#8a84a0; width:350px; padding-left:100px; ">
     
-            <h4 class="text-center p-2 text-white font-weight-bold"> Book Doctor Appointment</h4>
+            <h4 class="text-center text-white font-weight-bold"> Book Doctor Appointment</h4>
             <hr>
 
             <form method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <br>
-                <button class="btn btn-primary" type="submit">Submit</button>
+                
+                <button class="btn text-color-btn" type="submit">Submit</button>
             </form>
         </div>
       </div>
-      <div class="col-xl-6 col-lg-6 col-md-6 p-5 " style="margin-top:100px;" >
-        <img src="https://taglineinfotech.com/wp-content/uploads/2022/01/on-demand-doctor-app.webp"   alt="responsive webite" class="img-fluid">
+      <div class="col-xl-6 col-lg-6 col-md-6 p-5 " style="margin-top:70px;" >
+        <img src="{% static 'images/bookss.webp' %}"   alt="responsive webite" class="img-fluid">
         
       </div>
     </div>

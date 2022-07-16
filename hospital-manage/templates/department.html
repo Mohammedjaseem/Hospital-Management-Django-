@@ -10,16 +10,16 @@ Department
 <div class="container " >
     <div class="row">
         <div class="col-md-12 p-5 text-center">
-            <h1 class="text-secondary text-white text-decoration-underline">Our Departments</h1>
+            <h1 class=" text-white text-decoration-underline">Our Departments</h1>
         </div>
     </div>
 </div>
 
-<div class='container  bg-light my-5 rounded p-5'>
+<div class='container  my-5 rounded p-4 justify-content-center' style="background-color:#6db8bb;">
     {% for d in dept %}
-    <div class="card p-1 my-3 mx-3  " style="width: 18rem; display:inline-block">
+    <div class="card p-2 my-3 mx-3  " style="width: 20rem; display:inline-block">
         <div class="card-body">
-          <h5 class="card-title text-danger">{{d.dep_name}}</h5>
+          <h5 class="card-title" style="color:#140941">{{d.dep_name}}</h5>
           <p class="card-text">{{d.dep_decription}}</p>
         </div>
       </div>
