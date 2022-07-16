@@ -10,14 +10,25 @@ Register here
 {% block content %}
 <!--Register--> 
 <div class="container py-5 col-md-6 ">
-	<h1 class="text-center">Register here</h1><br>
-    <div class="p-5 bg-info" style="border-radius: 30px">
+	<h1 class="text-center text-white" style="text-decoration:underline">Register here</h1><br>
+
+	{% for message in messages %}
+    
+    <div class="alert alert-success" style="width:600px">
+        <a class="close" href="#" data-dismiss="alert">×</a>
+           {{ message }}
+    </div>
+
+	{% endfor %}
+
+
+    <div class="p-5" style="border-radius: 30px; background-color:#6db8bb">
 	<form method="POST">
 		{% csrf_token %}
 		{{ register_form|crispy }}                    
 		<button class="btn btn-primary" type="submit">Register</button>
-	</form>
-	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+	</form><br>
+	<p class="text-left" style="font-size:15px">If you already have an account, <a href="/login">login</a> instead.</p>
 </div></div>
 
 {% comment %}

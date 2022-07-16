@@ -10,6 +10,17 @@
 <!--Login--> 
 <div class="container py-5 col-md-6 " style="margin-left:35%;">
   <h4 class="text-white">User Login</h4><br>
+
+  {% for message in messages %}
+    
+    <div class="alert alert-success" style="width:400px">
+        <a class="close" href="#" data-dismiss="alert">×</a>
+           {{ message }}
+    </div>
+
+{% endfor %}
+
+
   <div class="bg-info p-5" style="width:410px; border-radius: 40px;">
   <form method="POST" style="width:300px; ">
     {% csrf_token %}

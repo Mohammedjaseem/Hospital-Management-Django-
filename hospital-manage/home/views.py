@@ -76,13 +76,16 @@ def register_request(request):
 		if form.is_valid():
 			user = form.save()
 			# login(request, user) this will make user login automatically before a manuel login 
-			messages.success(request, "Registration successful." )
+			
+			messages.success(request, "Registration successful, Please Login" )
 			return redirect("login")
+			
             # add a else case for wrong login details 
 		else:
-			return redirect("invalidRegister")
-			messages.error(request,"Invalid username or password.")
+			messages.error(request,"Unsuccessful registration. Invalid information.")
+			return redirect("register")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
+		return redirect("register")
 	form = NewUserForm()
 	return render (request=request, template_name="register.html", context={"register_form":form})
 
@@ -99,11 +102,11 @@ def login_request(request):
 				messages.info(request, f"You are now logged in as {username}.")
 				return redirect("profile")
 			else:
-				return redirect("wrongid")
 				messages.error(request,"Invalid username or password.")
-		else:
-			return redirect("wrongid")
+				return redirect("login")
+		else:			
 			messages.error(request,"Invalid username or password.")
+			return redirect("login")
 	form = AuthenticationForm()
 	return render(request=request, template_name="login.html", context={"login_form":form})
 
@@ -118,23 +121,7 @@ def profile(request):
 	else:
 		return redirect("login")
 
-def wrongid(request):
-	if request.method == "POST":
-		form = AuthenticationForm(request, data=request.POST)
-		if form.is_valid():
-			username = form.cleaned_data.get('username')
-			password = form.cleaned_data.get('password')
-			user = authenticate(username=username, password=password)
-			if user is not None:
-				login(request, user)
-				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("profile")
-			else:
-				return redirect("login")
-		else:
-			return redirect("login")
-	form = AuthenticationForm()
-	return render(request=request, template_name="wrongid.html", context={"login_form":form})
+
 
 def warning(request):
 	if request.method == "POST":
@@ -154,19 +141,7 @@ def warning(request):
 	form = AuthenticationForm()
 	return render(request=request, template_name="warning.html", context={"login_form":form})
 
-def invalidRegister(request):
-	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			messages.success(request, "Registration successful." )
-			return redirect("login")
-            # add a else case for wrong login details 
-		else:
-			return redirect("invalidRegister")
-	else:
-		form = NewUserForm()
-		return render (request=request, template_name="invalidReg.html", context={"register_form":form})
+
 
 
 
