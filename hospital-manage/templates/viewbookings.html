@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Le'valorHealth | Doctors
+{% endblock %}
+
+
+{% block content %}
+<h1 class='p-2 my-5 text-center text-decoration-underline text-white'>Specialized Doctors</h1>
+
+<div class='container d-flex justify-content-center my-5' style="border-radius:30px; background-color:white">
+{% for d in doctors%}
+
+
+    <div class="card p-1 my-3 mx-2 items-center  " style="width: 17rem; border-radius:15px; display:inline-block; background-color:#6db8bb">
+        <img class="card-img-top p-2" style="border-radius:15px;" src="{{ d.doc_img.url }}" alt="{{ d.name }}">
+        <div class="card-body">
+          <h5 class="card-title text-dark">{{d.doc_name}}</h5>
+          <p class="card-text text-primary">{{d.doc_spec}}</p>
+          <h6 class="text-dark">{{d.dep_name}}</h6>
+          <a class="btn text-color-btn " href="{% url 'bookings' %}" role="button">Book Doctor</a>
+        </div>
+      </div>
+
+
+    
+{% endfor %}
+    
+</div> 
+{% endblock %}
+
