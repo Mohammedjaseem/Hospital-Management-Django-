@@ -111,9 +111,15 @@
               <li class="nav-item">
                 <a class="nav-link text-color-nav" href="/logout">Logout</a>
               </li>
+              {% if user.is_superuser %}
+              <li class="nav-item">
+                <a class="nav-link text-color-nav" href="{% url 'viewbookings' %}">View Bookings</a>
+              </li>
+              {%else%}
               <li class="nav-item">
                 <a class="nav-link text-color-nav" href="{% url 'profile' %}">Go to Profile</a>
               </li>
+              {% endif %}
             </div>
           </div>
         

@@ -21,7 +21,6 @@ class BookingForm(forms.ModelForm):
             'p_email': 'Patient Email',
             'doc_name': 'Doctor',
             'booking_date': 'Booking Date',
-            
         }
 
 class NewUserForm(UserCreationForm):

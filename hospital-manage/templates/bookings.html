@@ -23,6 +23,7 @@ Le'valorHealth | Bookings
             <form method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
+
                 
                 <button class="btn text-color-btn" type="submit">Submit</button>
             </form>
@@ -35,29 +36,6 @@ Le'valorHealth | Bookings
     </div>
   </section>
 
-{% comment %} <div class="container">
-    <div class=" p-2" style="width:50%">
-        <div class="banner_img">
-            <img src="https://immigration.marlboroughmedical.com/wp-content/uploads/2021/11/doctor-examining-patient-clinic-illustrated_23-21488565591.jpg" alt="" width=500px style="margin-right:10px" >
-        </div>
-    </div>
-
-    
-    <div class=" my-5 p-4 rounded " style=" background-color:#869684; width:500px;  ">
-    
-                <h4 class="text-center p-2 text-white font-weight-bold"> Book Doctor Appointment</h4>
-                <hr>
-    
-        <form method="POST">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <br>
-                    <button class="btn btn-primary" type="submit">Submit</button>
-        </form>
-    </div>
-</div> {% endcomment %}
-
-        
 
 
 {% endblock %}

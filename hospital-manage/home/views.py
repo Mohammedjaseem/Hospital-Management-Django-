@@ -14,7 +14,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .models import Departments
 from .models import Doctors
 from .forms import BookingForm
-
+from .forms import Booking
 
 
 def index(request):
@@ -121,6 +121,19 @@ def profile(request):
 	if request.user.is_authenticated:
 		return render(request, "profile.html")
 	else:
+		return redirect("login")
+
+
+def viewbookings(request):
+	if request.user.is_superuser:
+		dic_dept={
+        'dept': Booking.objects.all()
+		}
+		
+		return render(request, "viewbookings.html",dic_dept )
+
+	else:
+		messages.error(request, "You are not authorized to view this page")
 		return redirect("login")
 
 
