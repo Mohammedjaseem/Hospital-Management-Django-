@@ -19,7 +19,6 @@ Le'valorHealth | Bookings
     
             <h4 class="text-center text-white font-weight-bold"> Book Doctor Appointment</h4>
             <hr>
-
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy }}

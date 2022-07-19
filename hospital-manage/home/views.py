@@ -14,8 +14,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from .models import Departments
 from .models import Doctors
 from .forms import BookingForm
-from .forms import Booking
-
+from .forms import Booking 
+from .forms import Doctors
+from .forms import DoctorsAddforms
 
 def index(request):
     return render(request, 'index.html') 
@@ -26,19 +27,25 @@ def about(request):
 def bookings(request):
 	if request.user.is_authenticated:
     			if request.method == 'POST':
-    			    form = BookingForm(request.POST)
+    			    form = BookingForm(request.POST, request.FILES) # request.FILES is used to upload files
     			    if form.is_valid():
     			        form.save()
     			        return render(request, 'confrm.html')
+					
     			else:       
     			    form = BookingForm()
     			    dict_form = {
     			        'form': form
     			    }
     			    return render(request, 'bookings.html', dict_form)
+				
 	else:
 		messages.success(request, "You need to login for bookings" )
 		return redirect("login")
+	messages.success(request, "Something Went Wrong please try again" )
+	return redirect("login")
+		
+
 
 
 def doctors(request):
@@ -135,6 +142,26 @@ def viewbookings(request):
 	else:
 		messages.error(request, "You are not authorized to view this page")
 		return redirect("login")
+
+def adddoctors(request):
+	if request.user.is_authenticated:
+    			if request.method == 'POST':
+    			    form = DoctorsAddforms(request.POST, request.FILES) # request.FILES is used to upload files
+    			    if form.is_valid():
+    			        form.save()
+    			        return render(request, 'confrm.html')
+					
+    			else:       
+    			    DoctorsAdd = DoctorsAddforms()
+    			    dict_form = {
+    			        'form': DoctorsAdd
+    			    }
+    			    return render(request, 'adddoctors.html', dict_form)
+				
+	messages.success(request, "Only Super User can add a doctor" )
+	return redirect("login")
+		
+
 
 
 

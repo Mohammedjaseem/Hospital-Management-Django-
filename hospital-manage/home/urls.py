@@ -18,4 +18,12 @@ urlpatterns = [
     path("logout", views.logout_request, name= "logout"),
     path("profile", views.profile, name= "profile"),
     path("viewbookings", views.viewbookings, name="viewbookings"),
+    path('adddoctors' , views.adddoctors, name='adddoctors'),
+
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

@@ -3,6 +3,7 @@ from .models import Booking
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db import models  
+from .models import *
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -21,6 +22,19 @@ class BookingForm(forms.ModelForm):
             'p_email': 'Patient Email',
             'doc_name': 'Doctor',
             'booking_date': 'Booking Date',
+            'p_Img': 'Patient Image',
+        }
+
+class DoctorsAddforms(forms.ModelForm):
+    
+    class Meta:
+        model = Doctors
+        fields = '__all__'
+        labels = {
+            'doc_name': 'Doctor Name',
+            'doc_spec': 'Specialization',
+            'dep_name': 'Department',
+            'doc_img': 'Booking Date',
         }
 
 class NewUserForm(UserCreationForm):
